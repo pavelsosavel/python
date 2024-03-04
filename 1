@@ -1,0 +1,30 @@
+import sys
+import time
+
+# Function to simulate typing
+def slow_type(t, speed=0.05):
+    for letter in t:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(speed)
+    print("")
+
+# Function to present a choice to the user
+def make_choice(prompt, options):
+    slow_type(prompt)
+    for i, option in enumerate(options, 1):
+        slow_type(f"{i}. {option}")
+    choice = input("> ")
+    return choice
+
+# Function to handle the path in the forest
+def forest_path():
+    slow_type("You find yourself in a dense forest with two paths.")
+    choice = make_choice("Do you go left or right?", ["Left", "Right"])
+    if choice == "1":
+        left_path()
+    elif choice == "2":
+        right_path()
+    else:
+        slow_type("That's not a valid choice. Try again.")
+        forest_path
